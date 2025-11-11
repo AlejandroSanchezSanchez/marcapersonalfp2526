@@ -6,6 +6,19 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/users', function () {
+    return view('users.usersList', [
+        'users' => [
+            ['id' => 1, "name" => 'Ana'],
+            ['id' => 2, "name" => 'Maria'],
+            ['id' => 3, "name" => 'Juan'],
+            ['id' => 4, "name" => 'Alejandro'],
+        ]
+
+    ]);
+});
+
+
 // ----------------------------------------
 Route::get('login', function () {
     return "Login usuario";
