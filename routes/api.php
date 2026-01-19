@@ -14,14 +14,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 
 Route::prefix('v1')->group(function () {
-   // Route::apiResource('ciclos', CicloController::class);
+    Route::apiResource('ciclos', CicloController::class);
 
     Route::apiResource('familias_profesionales', FamiliaProfesionalController::class)->parameters([
-        'familias_profesionales' => 'familiaProfesional'
-    ]);
-
-      Route::apiResource('familias_profesionales.ciclos', CicloController::class)
-    ->parameters([
         'familias_profesionales' => 'familiaProfesional'
     ]);
 });

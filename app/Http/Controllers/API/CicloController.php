@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CicloResource;
 use App\Models\Ciclo;
-use App\Models\FamiliaProfesional;
+use GuzzleHttp\Psr7\Query;
 use Illuminate\Http\Request;
 
 class CicloController extends Controller
@@ -13,12 +13,12 @@ class CicloController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, FamiliaProfesional $familiaProfesional)
+    public function index(Request $request)
     {
 
-        $query = Ciclo::where('familia_id', $familiaProfesional->id);
+        $query = Ciclo::query();
         if($query) {
-            $query->where('nombre', 'like', '%' .$request->q . '%');
+            $query->orWhere('nombre', 'like', '%' .$request->q . '%');
         }
 
 
